@@ -1,0 +1,34 @@
+<h1 class="mainTitle">Todo list of {{ todoList.length }}:</h1>
+
+<div *ngIf="editState == false" class="main">
+  <h5>Add Todo</h5>
+  <form (submit)="addTodo()">
+    <input type="text" [(ngModel)]="todotext" [ngModelOptions]="{standalone: true}"> 
+  </form>
+</div>
+<div *ngIf="editState" class="main">
+  <h5>Edit Todo</h5>
+  <form #myForm="ngForm" (submit)="saveTodo()">
+    <input type="text" [(ngModel)]="todotext" [ngModelOptions]="{standalone: true}"> 
+    <button class="btn btn-warning" (click)="myForm.reset()">Cancel</button>
+  </form>
+</div>
+
+
+<div id="elem{{t.id}}" class="todoelement" *ngFor="let t of todoList" (mouseenter)="optionsDisplayIn(t.id)"
+(mouseleave)="optionsDisplayOut(t.id)">
+<div class="options">
+  <span>Created: {{ t.dateCreated }}</span>
+  <span *ngIf="t.dateUpdated">Updated: {{ t.dateUpdated }}</span>
+  <span *ngIf="t.dateCompleted">Completed: {{ t.dateCompleted }}</span>
+</div>
+<div class="text">
+  <h3 [ngClass]="{'completed': t.dateCompleted}">{{ t.text }}</h3>
+</div>
+<div class="options">
+  <span (click)="completeTodo(t.id)">Complete</span>
+  <span (click)="editTodo(t.id)">Edit</span> 
+  <span (click)="deleteTodo(t.id)">Delete</span>
+</div>
+</div>
+
