@@ -1,10 +1,10 @@
 # ToDoApp
 
-This is a very simple Angular App ussing web browser local storage for CReate Update and Delete 'todos'.
+This is a very simple Angular App using web browser local storage for CReate Update and Delete 'todos'.
 
 ## Build
 
-Run `npm install` to download and install the packages . This will build the project.
+Run `npm install` to download and install the packages. This will build the project.
 
 ## Development server
 
